@@ -26,18 +26,18 @@ body {
   font-family: Inter, "Helvetica Neue", Arial, ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: geometricPrecision;
-  transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1), 
-              color 500ms cubic-bezier(0.4, 0, 0.2, 1),
-              border-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 1000ms cubic-bezier(0.4, 0, 0.2, 1), 
+              color 1000ms cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 1000ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Smoothly transition all cards and interactive elements */
 .rounded-xl, .rounded-2xl, .rounded-[28px], button, input, header, footer {
-  transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1), 
-              border-color 500ms cubic-bezier(0.4, 0, 0.2, 1), 
-              color 500ms cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1),
-              ring-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 1000ms cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 1000ms cubic-bezier(0.4, 0, 0.2, 1), 
+              color 1000ms cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 1000ms cubic-bezier(0.4, 0, 0.2, 1),
+              ring-color 1000ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes fadeIn {
