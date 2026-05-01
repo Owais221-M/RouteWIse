@@ -1,10 +1,36 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useTheme } from "next-themes";
 import SearchBar from "@/components/SearchBar";
 
 export default function HomePage() {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
-    <main className="bg-gray-50 transition-colors duration-300 dark:bg-gray-900">
-      <section className="px-4 pb-16 pt-16 text-gray-900 dark:text-white">
+    <main className="min-h-screen bg-gray-50 transition-colors duration-300 dark:bg-gray-900">
+      <section className="px-4 pb-16 pt-12 text-gray-900 dark:text-white">
         <div className="mx-auto w-full max-w-4xl text-center fade-in">
+          <div className="mb-12 flex justify-center">
+            {mounted ? (
+              <Image
+                src={resolvedTheme === "dark" ? "/images/logo-dark.png" : "/images/logo-light.png"}
+                alt="BuyTrip Logo"
+                width={240}
+                height={64}
+                className="h-16 w-auto md:h-20"
+                priority
+              />
+            ) : (
+              <div className="h-16 w-48 bg-gray-100 dark:bg-gray-800 animate-pulse rounded" />
+            )}
+          </div>
           <div className="mx-auto mb-8 max-w-2xl">
             <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl dark:text-white">
               Plan smarter journeys across Europe

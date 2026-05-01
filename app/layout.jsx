@@ -1,7 +1,6 @@
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const metadata = {
   title: "BuyTrip — Smarter European Travel",
@@ -11,13 +10,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="flex min-h-screen flex-col">
+      <body className="relative flex min-h-screen flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <Navbar />
-          <div className="flex-1">
-            {children}
+          <div className="fixed right-4 top-4 z-50">
+            <ThemeToggle />
           </div>
-          <Footer />
+          <main className="flex-1">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>
