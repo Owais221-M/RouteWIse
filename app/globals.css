@@ -26,16 +26,16 @@ body {
   font-family: Inter, "Helvetica Neue", Arial, ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: geometricPrecision;
-  transition-property: background-color, color, border-color;
-  transition-duration: 1000ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: background-color, color, border-color !important;
+  transition-duration: 1000ms !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 /* Smoothly transition all cards and interactive elements */
 .rounded-xl, .rounded-2xl, .rounded-\[28px\], button, input, header, footer, a, span, p, h1, h2, h3 {
-  transition-property: background-color, border-color, color, box-shadow, outline-color;
-  transition-duration: 1000ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: background-color, border-color, color, box-shadow, outline-color !important;
+  transition-duration: 1000ms !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 @keyframes fadeIn {
