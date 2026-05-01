@@ -24,9 +24,9 @@ export default function Navbar() {
             <Image
               src={resolvedTheme === "dark" ? "/images/logo-dark.png" : "/images/logo-light.png"}
               alt="BuyTrip Logo"
-              width={120}
-              height={32}
-              className="h-8 w-auto"
+              width={180}
+              height={48}
+              className="h-12 w-auto md:h-14"
               priority
             />
           )}
