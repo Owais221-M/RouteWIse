@@ -17,7 +17,9 @@ function TripPill({ active, children, onClick }) {
   return (
     <button
       className={`inline-flex h-9 items-center rounded-full px-4 text-sm font-bold transition ${
-        active ? "bg-white text-blue-600 shadow-sm" : "text-gray-600/90 hover:bg-white/10"
+        active 
+          ? "bg-white text-blue-600 shadow-sm dark:bg-blue-600 dark:text-white" 
+          : "text-gray-600/90 hover:bg-white/10 dark:text-gray-400 dark:hover:bg-white/5"
       }`}
       onClick={onClick}
       type="button"
@@ -88,11 +90,15 @@ export default function SearchBar({
   }
 
   const inputClass =
-    "h-16 w-full rounded-xl border-0 bg-white px-12 pt-5 text-base font-bold text-gray-900 outline-none ring-1 ring-gray-200 transition placeholder:text-gray-400 focus:ring-2 focus:ring-blue-600";
-  const labelClass = "absolute left-12 top-2 text-xs font-bold text-gray-500";
+    "h-16 w-full rounded-xl border-0 bg-white px-12 pt-5 text-base font-bold text-gray-900 outline-none ring-1 ring-gray-200 transition placeholder:text-gray-400 focus:ring-2 focus:ring-blue-600 dark:bg-gray-800 dark:text-white dark:ring-gray-700 dark:placeholder:text-gray-500 dark:focus:ring-blue-500";
+  const labelClass = "absolute left-12 top-2 text-xs font-bold text-gray-500 dark:text-gray-400";
 
   return (
-    <div className={compact ? "rounded-2xl bg-white p-3 shadow-lg" : "rounded-[28px] bg-white p-3 shadow-2xl sm:p-4"}>
+    <div className={`transition-colors duration-300 ${
+      compact 
+        ? "rounded-2xl bg-white p-3 shadow-lg dark:bg-gray-900 dark:shadow-none dark:ring-1 dark:ring-gray-800" 
+        : "rounded-[28px] bg-white p-3 shadow-2xl dark:bg-gray-900/50 dark:backdrop-blur-sm dark:shadow-none dark:ring-1 dark:ring-gray-800 sm:p-4"
+    }`}>
       <div className="mb-3 flex flex-wrap items-center gap-2 px-1">
         <TripPill active={travelMode === "train"} onClick={() => setTravelMode("train")}>
           <TrainFront className="mr-2 h-4 w-4" />
@@ -118,7 +124,7 @@ export default function SearchBar({
         <label className="block">
           <span className="relative block">
             <span className={labelClass}>From</span>
-            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500">
               <MapPin className="h-5 w-5" />
             </span>
             <input
@@ -136,7 +142,7 @@ export default function SearchBar({
         <div className="flex items-end justify-center md:pb-0 lg:pb-0">
           <button
             aria-label="Swap origin and destination"
-            className="flex h-12 w-full items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm transition hover:bg-blue-700 md:w-12"
+            className="flex h-12 w-full items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm transition hover:bg-blue-700 active:scale-95 md:w-12"
             onClick={swapRoute}
             type="button"
           >
@@ -147,7 +153,7 @@ export default function SearchBar({
         <label className="block">
           <span className="relative block">
             <span className={labelClass}>To</span>
-            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500">
               <MapPin className="h-5 w-5" />
             </span>
             <input
@@ -164,11 +170,11 @@ export default function SearchBar({
         <label className="block md:col-span-3 lg:col-span-1">
           <span className="relative block">
             <span className={labelClass}>Depart</span>
-            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500">
               <CalendarDays className="h-5 w-5" />
             </span>
             <input
-              className="h-16 w-full min-w-[180px] rounded-xl border-0 bg-white pl-12 pr-3 pt-5 text-sm font-bold text-gray-900 outline-none ring-1 ring-gray-200 transition focus:ring-2 focus:ring-blue-600"
+              className="h-16 w-full min-w-[180px] rounded-xl border-0 bg-white pl-12 pr-3 pt-5 text-sm font-bold text-gray-900 outline-none ring-1 ring-gray-200 transition focus:ring-2 focus:ring-blue-600 dark:bg-gray-800 dark:text-white dark:ring-gray-700 dark:focus:ring-blue-500"
               onChange={(event) => setDate(event.target.value)}
               required
               type="date"
@@ -178,7 +184,7 @@ export default function SearchBar({
         </label>
 
         <button
-          className={`flex h-16 w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 text-base font-black text-white shadow transition hover:opacity-95 active:scale-95 disabled:cursor-not-allowed disabled:bg-gray-300 ${
+          className={`flex h-16 w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 text-base font-black text-white shadow transition hover:opacity-95 active:scale-95 disabled:cursor-not-allowed disabled:bg-gray-300 dark:disabled:bg-gray-800 ${
             compact ? "lg:col-span-1" : "md:col-span-3 lg:col-span-4"
           }`}
           disabled={isSearching}
@@ -198,7 +204,7 @@ export default function SearchBar({
         </button>
       </form>
       {!compact ? (
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-semibold text-gray-600">
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-semibold text-gray-600 dark:text-gray-400">
           <span>No signup required • Instant results</span>
         </div>
       ) : null}

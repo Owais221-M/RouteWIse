@@ -241,15 +241,15 @@ function ResultsContent() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50">
-      <div className="sticky top-0 z-10 bg-gray-50 px-4 py-4 shadow-sm">
+    <main className="min-h-screen bg-gray-50 transition-colors duration-300 dark:bg-gray-950">
+      <div className="sticky top-0 z-10 bg-gray-50/80 px-4 py-4 shadow-sm backdrop-blur-md transition-colors duration-300 dark:bg-gray-950/80 dark:ring-1 dark:ring-gray-800">
         <section className="mx-auto w-full max-w-4xl">
           <div className="mb-3 flex items-center justify-between">
-            <Link href="/" className="inline-flex items-center text-sm font-bold text-gray-900">
+            <Link href="/" className="inline-flex items-center text-sm font-bold text-gray-900 dark:text-white">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Search
             </Link>
-            <div className="text-sm font-black text-gray-900">BuyTrip Europe</div>
+            <div className="text-sm font-black text-gray-900 dark:text-white">BuyTrip Europe</div>
           </div>
 
           <SearchBar compact initialDate={date} initialDestination={destination} initialOrigin={origin} />
@@ -259,15 +259,15 @@ function ResultsContent() {
       <section className="mx-auto w-full max-w-4xl px-4 py-8 sm:py-10">
         <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-sm font-black uppercase tracking-[0.16em] text-blue-600">Search results</p>
-            <h1 className="mt-2 text-3xl font-black tracking-normal text-gray-900 sm:text-4xl">
+            <p className="text-sm font-black uppercase tracking-[0.16em] text-blue-600 dark:text-blue-400">Search results</p>
+            <h1 className="mt-2 text-3xl font-black tracking-normal text-gray-900 sm:text-4xl dark:text-white">
               {origin || "Origin"} to {destination || "Destination"}
             </h1>
-            <p className="mt-2 text-gray-600">{date || "Choose a date to compare routes"}</p>
+            <p className="mt-2 text-gray-600 dark:text-gray-400">{date || "Choose a date to compare routes"}</p>
           </div>
 
           <button
-            className="inline-flex h-11 items-center justify-center rounded-xl border border-blue-100 bg-white px-4 text-sm font-black text-gray-800 shadow-sm transition hover:opacity-95 hover:text-blue-600"
+            className="inline-flex h-11 items-center justify-center rounded-xl border border-blue-100 bg-white px-4 text-sm font-black text-gray-800 shadow-sm transition hover:opacity-95 hover:text-blue-600 dark:bg-gray-900 dark:border-gray-800 dark:text-gray-300 dark:hover:text-blue-400"
             onClick={() => setShowFilters((current) => !current)}
             type="button"
           >
@@ -281,8 +281,8 @@ function ResultsContent() {
             <button
               className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-black transition ${
                 activeSort === item.key
-                  ? "bg-blue-600 text-white shadow-sm"
-                  : "bg-white text-gray-700 ring-1 ring-blue-50 hover:text-blue-600"
+                  ? "bg-blue-600 text-white shadow-sm dark:bg-blue-500"
+                  : "bg-white text-gray-700 ring-1 ring-blue-50 hover:text-blue-600 dark:bg-gray-900 dark:text-gray-400 dark:ring-gray-800 dark:hover:text-blue-400"
               }`}
               key={item.key}
               onClick={() => setActiveSort(item.key)}
@@ -294,16 +294,16 @@ function ResultsContent() {
         </div>
 
         {showFilters ? (
-          <div className="mb-5 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-blue-50">
+          <div className="mb-5 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-blue-50 dark:bg-gray-900 dark:ring-gray-800">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-sm font-black text-gray-900">Transport type</p>
+              <p className="text-sm font-black text-gray-900 dark:text-white">Transport type</p>
               <div className="flex flex-wrap gap-2">
                 {["train", "bus", "mixed"].map((type) => (
                   <button
                     className={`rounded-full px-4 py-2 text-sm font-black capitalize transition ${
                       selectedTypes.includes(type)
-                        ? "bg-blue-600 text-white"
-                        : "bg-gray-100 text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                        ? "bg-blue-600 text-white dark:bg-blue-500"
+                        : "bg-gray-100 text-gray-700 hover:bg-blue-50 hover:text-blue-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-blue-400"
                     }`}
                     key={type}
                     onClick={() => toggleRouteType(type)}
@@ -318,30 +318,30 @@ function ResultsContent() {
         ) : null}
 
         {data ? (
-          <div className="mb-6 rounded-2xl bg-white p-6 shadow-md">
-            <p className="text-sm font-black uppercase tracking-[0.12em] text-blue-600">Recommended journey based on efficiency</p>
+          <div className="mb-6 rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900 dark:shadow-none dark:ring-1 dark:ring-gray-800">
+            <p className="text-sm font-black uppercase tracking-[0.12em] text-blue-600 dark:text-blue-400">Recommended journey based on efficiency</p>
             <div className="mt-2 flex items-baseline gap-4">
-              <p className="text-2xl font-extrabold text-gray-900">€{data.recommended.price}</p>
-              <p className="text-sm font-bold text-gray-900">{data.recommended.duration}h</p>
+              <p className="text-2xl font-extrabold text-gray-900 dark:text-white">€{data.recommended.price}</p>
+              <p className="text-sm font-bold text-gray-900 dark:text-gray-300">{data.recommended.duration}h</p>
             </div>
-            <p className="mt-2 text-sm text-gray-600">Balances time, cost, and convenience</p>
-            <p className="mt-3 text-sm leading-6 text-gray-500 border-t border-gray-100 pt-3">This route is selected because it offers the best balance of time and cost compared to available alternatives.</p>
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Balances time, cost, and convenience</p>
+            <p className="mt-3 text-sm leading-6 text-gray-500 border-t border-gray-100 pt-3 dark:text-gray-400 dark:border-gray-800">This route is selected because it offers the best balance of time and cost compared to available alternatives.</p>
           </div>
         ) : null}
 
         {resultsBlock}
 
         {insight ? (
-          <div className="mt-6 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-blue-50">
-            <p className="text-sm font-black uppercase tracking-[0.16em] text-blue-600">Insight</p>
-            <p className="mt-2 text-sm leading-6 text-gray-700">{insight}</p>
+          <div className="mt-6 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-blue-50 dark:bg-gray-900 dark:ring-gray-800">
+            <p className="text-sm font-black uppercase tracking-[0.16em] text-blue-600 dark:text-blue-400">Insight</p>
+            <p className="mt-2 text-sm leading-6 text-gray-700 dark:text-gray-300">{insight}</p>
           </div>
         ) : null}
 
-        <p className="mt-8 text-center text-xs font-medium text-gray-400">Schedules and prices may vary at booking.</p>
+        <p className="mt-8 text-center text-xs font-medium text-gray-400 dark:text-gray-500">Schedules and prices may vary at booking.</p>
         {data ? (
-          <div className="mt-4 rounded-2xl border border-blue-50 bg-blue-50 px-4 py-3 text-center">
-            <p className="text-xs font-semibold text-blue-600">
+          <div className="mt-4 rounded-2xl border border-blue-50 bg-blue-50 px-4 py-3 text-center dark:bg-blue-900/20 dark:border-blue-900/30">
+            <p className="text-xs font-semibold text-blue-600 dark:text-blue-400">
               {data.recommended.transfers > 0
                 ? "💡 Routes with transfers are often cheaper — compare all options above."
                 : "💡 Booking earlier can significantly reduce prices. Lock in your rate today."}
@@ -351,16 +351,16 @@ function ResultsContent() {
       </section>
 
       {selectedRoute ? (
-        <div className="fixed inset-0 z-20 flex items-end bg-gray-950/50 p-4 sm:items-center sm:justify-center">
-          <div className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl">
+        <div className="fixed inset-0 z-20 flex items-end bg-gray-950/50 p-4 sm:items-center sm:justify-center dark:bg-gray-950/80">
+          <div className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl dark:bg-gray-900 dark:ring-1 dark:ring-gray-800">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-sm font-black text-blue-600">{selectedRoute.title}</p>
-                <h2 className="mt-2 text-2xl font-black text-gray-900">{selectedRoute.option.route}</h2>
+                <p className="text-sm font-black text-blue-600 dark:text-blue-400">{selectedRoute.title}</p>
+                <h2 className="mt-2 text-2xl font-black text-gray-900 dark:text-white">{selectedRoute.option.route}</h2>
               </div>
               <button
                 aria-label="Close route details"
-                className="rounded-full bg-gray-100 p-2 text-gray-600 transition hover:bg-gray-200 hover:text-gray-900"
+                className="rounded-full bg-gray-100 p-2 text-gray-600 transition hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 onClick={() => setSelectedRoute(null)}
                 type="button"
               >
@@ -369,63 +369,63 @@ function ResultsContent() {
             </div>
 
             <dl className="mt-6 grid grid-cols-3 gap-3">
-              <div className="rounded-xl bg-gray-50 p-3">
-                <dt className="text-xs font-bold uppercase text-gray-500">Price</dt>
-                <dd className="mt-1 text-xl font-black text-[#007a7a]">€{selectedRoute.option.price}</dd>
+              <div className="rounded-xl bg-gray-50 p-3 dark:bg-gray-800/50">
+                <dt className="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">Price</dt>
+                <dd className="mt-1 text-xl font-black text-[#007a7a] dark:text-[#00a3a3]">€{selectedRoute.option.price}</dd>
               </div>
-              <div className="rounded-xl bg-gray-50 p-3">
-                <dt className="text-xs font-bold uppercase text-gray-500">Duration</dt>
-                <dd className="mt-1 text-xl font-black text-gray-900">{selectedRoute.option.duration}h</dd>
+              <div className="rounded-xl bg-gray-50 p-3 dark:bg-gray-800/50">
+                <dt className="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">Duration</dt>
+                <dd className="mt-1 text-xl font-black text-gray-900 dark:text-white">{selectedRoute.option.duration}h</dd>
               </div>
-              <div className="rounded-xl bg-gray-50 p-3">
-                <dt className="text-xs font-bold uppercase text-gray-500">Transfers</dt>
-                <dd className="mt-1 text-xl font-black text-gray-900">{selectedRoute.option.transfers}</dd>
+              <div className="rounded-xl bg-gray-50 p-3 dark:bg-gray-800/50">
+                <dt className="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">Transfers</dt>
+                <dd className="mt-1 text-xl font-black text-gray-900 dark:text-white">{selectedRoute.option.transfers}</dd>
               </div>
             </dl>
 
-            <div className="mt-4 flex items-center justify-between rounded-xl border border-gray-100 bg-white p-4 shadow-sm">
+            <div className="mt-4 flex items-center justify-between rounded-xl border border-gray-100 bg-white p-4 shadow-sm dark:bg-gray-800 dark:border-gray-700">
               <div className="flex flex-col">
-                <span className="text-xs font-bold uppercase text-gray-500">Departure</span>
-                <span className="text-lg font-black text-gray-900">{selectedRoute.option.departure_time || "--:--"}</span>
+                <span className="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">Departure</span>
+                <span className="text-lg font-black text-gray-900 dark:text-white">{selectedRoute.option.departure_time || "--:--"}</span>
               </div>
-              <Clock className="h-5 w-5 text-gray-300" />
+              <Clock className="h-5 w-5 text-gray-300 dark:text-gray-600" />
               <div className="flex flex-col text-right">
-                <span className="text-xs font-bold uppercase text-gray-500">Arrival</span>
-                <span className="text-lg font-black text-gray-900">{selectedRoute.option.arrival_time || "--:--"}</span>
+                <span className="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">Arrival</span>
+                <span className="text-lg font-black text-gray-900 dark:text-white">{selectedRoute.option.arrival_time || "--:--"}</span>
               </div>
             </div>
 
-            <div className="mt-5 rounded-2xl bg-blue-50 p-4">
-              <p className="text-xs font-black uppercase tracking-[0.12em] text-blue-700">Efficiency vs fastest</p>
-              <p className="mt-1 text-sm font-medium text-blue-600">
+            <div className="mt-5 rounded-2xl bg-blue-50 p-4 dark:bg-blue-900/20">
+              <p className="text-xs font-black uppercase tracking-[0.12em] text-blue-700 dark:text-blue-400">Efficiency vs fastest</p>
+              <p className="mt-1 text-sm font-medium text-blue-600 dark:text-blue-300">
                 {selectedRoute.option.savings_vs_fastest > 0
                   ? `€${selectedRoute.option.savings_vs_fastest} more efficient than fastest option`
                   : `Achieves similar travel for €${Math.max(0, Math.abs(selectedRoute.option.savings_vs_fastest ?? 0))} less`}
               </p>
-              <p className="mt-1 text-xs font-semibold text-gray-600">
+              <p className="mt-1 text-xs font-semibold text-gray-600 dark:text-gray-400">
                 {selectedRoute.option.time_difference_vs_fastest > 0
                   ? `+${selectedRoute.option.time_difference_vs_fastest}h vs fastest`
                   : "Same time as fastest"}
               </p>
             </div>
 
-            <p className="mt-5 text-sm leading-6 text-gray-600">{selectedRoute.option.explanation}</p>
+            <p className="mt-5 text-sm leading-6 text-gray-600 dark:text-gray-400">{selectedRoute.option.explanation}</p>
             {selectedRoute.option.itinerary ? (
-              <div className="mt-5 rounded-2xl bg-[#f4faf8] p-4">
-                <p className="inline-flex items-center text-sm font-black text-blue-600">
+              <div className="mt-5 rounded-2xl bg-[#f4faf8] p-4 dark:bg-gray-800/50">
+                <p className="inline-flex items-center text-sm font-black text-blue-600 dark:text-blue-400">
                   <MapPinned className="mr-2 h-4 w-4" />
                   Checkout itinerary
                 </p>
                 <div className="mt-4 space-y-3">
                     {selectedRoute.option.itinerary.legs.map((leg, index) => (
-                      <div className="rounded-xl bg-white p-3 ring-1 ring-blue-50" key={`${leg.from}-${leg.to}-${index}`}>
+                      <div className="rounded-xl bg-white p-3 ring-1 ring-blue-50 dark:bg-gray-900 dark:ring-gray-800" key={`${leg.from}-${leg.to}-${index}`}>
                       <div className="flex items-center justify-between gap-3">
-                        <p className="text-sm font-black text-gray-900">
+                        <p className="text-sm font-black text-gray-900 dark:text-white">
                           {leg.from} → {leg.to}
                         </p>
-                        <p className="text-xs font-bold uppercase text-gray-500">{leg.transport}</p>
+                        <p className="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">{leg.transport}</p>
                       </div>
-                      <p className="mt-1 text-sm font-semibold text-gray-600">
+                      <p className="mt-1 text-sm font-semibold text-gray-600 dark:text-gray-400">
                         {leg.departTime} → {leg.arriveTime} · {leg.duration}
                       </p>
                     </div>
