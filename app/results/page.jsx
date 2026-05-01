@@ -262,9 +262,9 @@ function ResultsContent() {
                 <Image
                   src={resolvedTheme === "dark" ? "/images/logo-dark.png" : "/images/logo-light.png"}
                   alt="BuyTrip Logo"
-                  width={110}
-                  height={28}
-                  className="h-7 w-auto"
+                  width={150}
+                  height={40}
+                  className="h-8 w-auto md:h-10"
                 />
               ) : (
                 <div className="h-5 w-20 bg-gray-100 dark:bg-gray-800 animate-pulse rounded" />
