@@ -21,9 +21,9 @@ export default function Footer() {
             <Image
               src={resolvedTheme === "dark" ? "/images/logo-dark.png" : "/images/logo-light.png"}
               alt="BuyTrip Logo"
-              width={200}
-              height={56}
-              className="h-14 w-auto md:h-16 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+              width={160}
+              height={44}
+              className="h-11 w-auto md:h-13 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
             />
           ) : (
             <div className="h-6 w-24 bg-gray-100 dark:bg-gray-800 animate-pulse rounded opacity-50" />

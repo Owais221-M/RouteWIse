@@ -16,17 +16,17 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-sm ring-1 ring-gray-100 transition-colors duration-300 dark:bg-gray-950 dark:ring-gray-800">
-      <div className="mx-auto flex h-20 max-w-4xl items-center justify-between px-4">
+      <div className="mx-auto flex h-16 max-w-4xl items-center justify-between px-4">
         <Link href="/" className="flex items-center transition hover:opacity-80">
           {!mounted ? (
-            <div className="h-14 w-36 bg-gray-100 dark:bg-gray-800 animate-pulse rounded" />
+            <div className="h-10 w-32 bg-gray-100 dark:bg-gray-800 animate-pulse rounded" />
           ) : (
             <Image
               src={resolvedTheme === "dark" ? "/images/logo-dark.png" : "/images/logo-light.png"}
               alt="BuyTrip Logo"
-              width={240}
-              height={72}
-              className="h-16 w-auto md:h-18"
+              width={200}
+              height={56}
+              className="h-14 w-auto md:h-15"
               priority
             />
           )}
