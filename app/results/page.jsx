@@ -2,7 +2,9 @@
 
 import { Suspense, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
+import { useTheme } from "next-themes";
 import { ArrowLeft, MapPinned, SlidersHorizontal, X, Clock } from "lucide-react";
 import BookingRedirect from "@/components/BookingRedirect";
 import ResultCard from "@/components/ResultCard";
@@ -168,6 +170,12 @@ function getInsight(data) {
 
 function ResultsContent() {
   const searchParams = useSearchParams();
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const origin = searchParams?.get("origin") ?? "";
   const destination = searchParams?.get("destination") ?? "";
   const date = searchParams?.get("date") ?? "";
@@ -249,7 +257,19 @@ function ResultsContent() {
               <ArrowLeft className="mr-2 h-4 w-4" />
               Search
             </Link>
-            <div className="text-sm font-black text-gray-900 dark:text-white">BuyTrip Europe</div>
+            <div className="flex h-6 items-center">
+              {mounted ? (
+                <Image
+                  src={resolvedTheme === "dark" ? "/images/logo-dark.png" : "/images/logo-light.png"}
+                  alt="BuyTrip Logo"
+                  width={80}
+                  height={20}
+                  className="h-5 w-auto"
+                />
+              ) : (
+                <div className="h-5 w-20 bg-gray-100 dark:bg-gray-800 animate-pulse rounded" />
+              )}
+            </div>
           </div>
 
           <SearchBar compact initialDate={date} initialDestination={destination} initialOrigin={origin} />
