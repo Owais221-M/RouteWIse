@@ -41,13 +41,13 @@ function LoadingPanel() {
   );
 }
 
-function useRouteSearch(origin, destination, date, canSearch) {
+function useRouteSearch(origin, destination, date, canSearch, initialTypes = ["train", "bus", "mixed"]) {
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [activeSort, setActiveSort] = useState("Recommended");
   const [showFilters, setShowFilters] = useState(false);
-  const [selectedTypes, setSelectedTypes] = useState(["train", "bus", "mixed"]);
+  const [selectedTypes, setSelectedTypes] = useState(initialTypes);
   const [selectedRoute, setSelectedRoute] = useState(null);
 
   useEffect(() => {
@@ -171,11 +171,16 @@ function ResultsContent() {
   const origin = searchParams?.get("origin") ?? "";
   const destination = searchParams?.get("destination") ?? "";
   const date = searchParams?.get("date") ?? "";
+  const modeParam = searchParams?.get("mode") ?? "";
 
   const canSearch = useMemo(
     () => Boolean(origin.trim() && destination.trim() && date.trim()),
     [origin, destination, date]
   );
+
+  // Sync the selectedTypes filter with the mode param from the URL
+  const modeToTypes = { train: ["train"], bus: ["bus"], mixed: ["mixed"] };
+  const initialTypes = modeToTypes[modeParam] ?? ["train", "bus", "mixed"];
 
   const {
     activeSort,
@@ -189,7 +194,7 @@ function ResultsContent() {
     setShowFilters,
     showFilters,
     toggleRouteType
-  } = useRouteSearch(origin, destination, date, canSearch);
+  } = useRouteSearch(origin, destination, date, canSearch, initialTypes);
 
   const resultCards = useMemo(
     () => getResultCards(data, activeSort, selectedTypes),

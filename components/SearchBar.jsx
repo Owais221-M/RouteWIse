@@ -168,7 +168,7 @@ export default function SearchBar({
               <CalendarDays className="h-5 w-5" />
             </span>
             <input
-              className={inputClass}
+              className="h-16 w-full min-w-[180px] rounded-xl border-0 bg-white pl-12 pr-3 pt-5 text-sm font-bold text-gray-900 outline-none ring-1 ring-gray-200 transition focus:ring-2 focus:ring-blue-600"
               onChange={(event) => setDate(event.target.value)}
               required
               type="date"
