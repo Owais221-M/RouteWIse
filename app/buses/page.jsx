@@ -6,7 +6,7 @@ export default function BusesPage() {
     <main className="min-h-screen bg-gray-50">
       <section className="bg-blue-600 px-4 py-8 text-white">
         <div className="mx-auto w-full max-w-3xl">
-          <Link className="text-xl font-black" href="/">RouteWise</Link>
+          <Link className="text-xl font-black" href="/">BuyTrip</Link>
           <div className="mx-auto mt-8">
             <h1 className="max-w-3xl text-4xl font-black sm:text-5xl">Coach and regional routes across Europe</h1>
             <p className="mt-4 max-w-2xl text-lg font-medium text-blue-100">

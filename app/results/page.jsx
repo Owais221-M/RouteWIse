@@ -244,7 +244,7 @@ function ResultsContent() {
               <ArrowLeft className="mr-2 h-4 w-4" />
               Search
             </Link>
-            <div className="text-sm font-black text-gray-900">RouteWise Europe</div>
+            <div className="text-sm font-black text-gray-900">BuyTrip Europe</div>
           </div>
 
           <SearchBar compact initialDate={date} initialDestination={destination} initialOrigin={origin} />

@@ -44,7 +44,7 @@ export default function SearchBar({
     // Only auto-fill if we are on the homepage (not compact) and didn't receive initial props other than the defaults
     if (!compact) {
       try {
-        const stored = localStorage.getItem("routewise_search");
+        const stored = localStorage.getItem("buytrip_search");
         if (stored) {
           const parsed = JSON.parse(stored);
           if (parsed.origin) setOrigin(parsed.origin);
@@ -68,7 +68,7 @@ export default function SearchBar({
       setIsSearching(true);
       
       try {
-        localStorage.setItem("routewise_search", JSON.stringify({ origin, destination, date }));
+        localStorage.setItem("buytrip_search", JSON.stringify({ origin, destination, date }));
       } catch (e) {}
 
       const params = new URLSearchParams({

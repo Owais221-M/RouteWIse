@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "How It Works | RouteWise",
-  description: "Discover how RouteWise finds the best travel routes for you."
+  title: "How It Works | BuyTrip",
+  description: "Discover how BuyTrip finds the best travel routes for you."
 };
 
 export default function HowItWorksPage() {

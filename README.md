@@ -1,8 +1,8 @@
-# RouteWise Travel Platform
+# BuyTrip Travel Platform
 
 A smarter way to compare and choose travel across Europe.
 
-RouteWise is a production-ready travel comparison platform for trains, buses, and mixed routes across Europe. It integrates structured transport data from operators and booking platforms, normalizes it, provides intelligent multi-leg routing, and securely redirects users to official providers for booking.
+BuyTrip is a production-ready travel comparison platform for trains, buses, and mixed routes across Europe. It integrates structured transport data from operators and booking platforms, normalizes it, provides intelligent multi-leg routing, and securely redirects users to official providers for booking.
 
 The platform operates as a robust **multi-provider marketplace** (similar to Skyscanner), elegantly grouping identical routes sold by different providers and surfacing the best prices.
 

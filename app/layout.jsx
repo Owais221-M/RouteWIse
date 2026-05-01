@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "RouteWise — Smarter European Travel",
+  title: "BuyTrip — Smarter European Travel",
   description: "A smarter way to compare and choose travel routes across Europe. Compare operators and booking platforms for trains, buses, and mixed routes."
 };
 

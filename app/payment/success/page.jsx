@@ -9,7 +9,7 @@ export default function PaymentSuccessPage({ searchParams }) {
         <p className="text-sm font-black uppercase tracking-[0.16em] text-blue-600">Payment started</p>
         <h1 className="mt-3 text-3xl font-black text-gray-900">Thanks, your checkout was accepted</h1>
         <p className="mt-4 text-sm leading-6 text-gray-600">
-          {provider} redirected you back to RouteWise. In production, confirm final payment status with provider
+          {provider} redirected you back to BuyTrip. In production, confirm final payment status with provider
           webhooks before issuing tickets.
         </p>
         {searchParams.session_id ? (
